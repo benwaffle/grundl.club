@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Axis;
+    src: url('axis.otf');
+}
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Axis;
+}
+/* mobile */
+h1 {
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: #ccc;
+    margin: 0;
+}
+h2 {
+    font-size: 15px;
+    color: #ddd;
+}
+/* dekstop */
+@media screen and (min-width: 1000px) {
+    h1 {
+        font-size: 75px;
+    }
+    h2 {
+        font-size: 25px;
+    }
+}
