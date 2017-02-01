@@ -9,6 +9,13 @@
     <body>
         <h1>grundl.club</h1>
         <h2>gay 4 pussy</h2>
+        <form id="form">
+            <h3>Alpha Signups</h3>
+            <label>email <input type="text" placeholder="you@grundl.club" name="email" /></label>
+            <label>password <input type="password" placeholder="password" name="password" /></label>
+            <label>why should we pick you for the alpha?<br /><textarea placeholder="cuz im kool" name="why" ></textarea></label>
+            <button>submit</button>
+        </form>
     </body>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -18,5 +25,37 @@
 
       ga('create', 'UA-38827364-4', 'auto');
       ga('send', 'pageview');
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCXQXa5S0em7dDCwCF8Jy3sH-7Kebp0aB0",
+        authDomain: "grundl-f76fb.firebaseapp.com",
+        databaseURL: "https://grundl-f76fb.firebaseio.com",
+        storageBucket: "grundl-f76fb.appspot.com",
+        messagingSenderId: "756367120577"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault()
+            const email = this.querySelector('input[name=email]').value
+            const password = this.querySelector('input[name=password]').value
+            const why = this.querySelector('textarea[name=why]').value
+
+            if (!email || !password || !why) {
+                alert('empty field')
+                return
+            }
+
+            firebase.database().ref('signups').push({
+                email,
+                password,
+                why
+            });
+            this.style.display = 'none';
+        })
     </script>
 </html>
